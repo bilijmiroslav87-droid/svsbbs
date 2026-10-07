@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "lightning-esp",
+  "version": "${version}",
+  "name": "Lightning Target ESP",
+  "description": "Lightning target ESP visual.",
+  "environment": "client",
+  "entrypoints": {
+    "client": [ "net.lightningesp.fabric.LightningEspFabric" ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
