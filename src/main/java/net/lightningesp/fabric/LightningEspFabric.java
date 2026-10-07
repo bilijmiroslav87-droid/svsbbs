@@ -14,11 +14,12 @@ public class LightningEspFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Категория клавиш в Fabric
         openMenuKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-            "Pulse Visuals Menu",
+            "key.lightningesp.menu",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_RIGHT_SHIFT,
-            "Pulse Visuals"
+            KeyBinding.MISC_CATEGORY
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -28,10 +29,10 @@ public class LightningEspFabric implements ClientModInitializer {
                 }
             }
 
+            // Амбиенс (кастомное время визуально)
             if (client.world != null && LightningEspState.ambience) {
-                client.world.setTimeOfDay(LightningEspState.customTime);
+                client.world.getLevelProperties().setTimeOfDay(LightningEspState.customTime);
             }
         });
     }
 }
-
