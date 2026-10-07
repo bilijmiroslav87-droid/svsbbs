@@ -60,17 +60,22 @@ public class PulseVisualsScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        // Исправленный вызов метода для Fabric 1.20.1
         this.renderBackground(context, mouseX, mouseY, delta);
         
         int startX = this.width / 2 - 150;
         int startY = this.height / 2 - 110;
         
-        // Корпус GUI
         context.fill(startX, startY, startX + 300, startY + 210, 0xF00D0D12); 
         context.fill(startX, startY, startX + 300, startY + 2, 0xFF9D00FF);
 
-        // Шапка
         context.drawText(this.textRenderer, "§b§lPULSE §f§lVISUALS §7| CLIENT 1.20.1", startX + 15, startY + 15, 0xFFFFFF, true);
-        context.drawText(
-            
+        context.drawText(this.textRenderer, "§7[Right Shift]", startX + 220, startY + 15, 0xAAAAAA, false);
+
+        super.render(context, mouseX, mouseY, delta);
+    }
+
+    @Override
+    public boolean shouldPause() {
+        return false;
+    }
+}
