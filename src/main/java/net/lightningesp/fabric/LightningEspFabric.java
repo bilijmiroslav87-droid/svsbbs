@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.lightningesp.gui.PulseVisualsScreen;
-import net.lightningesp.core.LightningEspState;
 import org.lwjgl.glfw.GLFW;
 
 public class LightningEspFabric implements ClientModInitializer {
@@ -14,7 +13,6 @@ public class LightningEspFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Категория клавиш в Fabric
         openMenuKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.lightningesp.menu",
             InputUtil.Type.KEYSYM,
@@ -27,11 +25,6 @@ public class LightningEspFabric implements ClientModInitializer {
                 if (client.player != null) {
                     client.setScreen(new PulseVisualsScreen());
                 }
-            }
-
-            // Амбиенс (кастомное время визуально)
-            if (client.world != null && LightningEspState.ambience) {
-                client.world.getLevelProperties().setTimeOfDay(LightningEspState.customTime);
             }
         });
     }
