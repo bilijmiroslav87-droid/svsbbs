@@ -13,17 +13,21 @@ public class LightningEspFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        openMenuKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+        // Создаем клавишу без обращения к константам категорий!
+        openMenuKey = new KeyBinding(
             "key.lightningesp.menu",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_RIGHT_SHIFT,
-            KeyBinding.CATEGORY_MISC
-        ));
+            "category.lightningesp"
+        );
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (openMenuKey.wasPressed()) {
-                if (client.player != null) {
-                    client.setScreen(new PulseVisualsScreen());
+            // Регистрируем бинд динамически при первом тике
+            if (openMenuKey != null) {
+                while (openMenuKey.wasPressed()) {
+                    if (client.player != null) {
+                        client.setScreen(new PulseVisualsScreen());
+                    }
                 }
             }
         });
