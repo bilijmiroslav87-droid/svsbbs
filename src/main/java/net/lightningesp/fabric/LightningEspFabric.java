@@ -13,11 +13,11 @@ public class LightningEspFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Используем базовый конструктор Fabric API (String, int, String)
         openMenuKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.lightningesp.menu",
+            InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_RIGHT_SHIFT,
-            "category.lightningesp"
+            KeyBinding.CATEGORY_MISC
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
