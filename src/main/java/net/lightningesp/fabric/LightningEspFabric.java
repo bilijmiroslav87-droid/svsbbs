@@ -17,7 +17,7 @@ public class LightningEspFabric implements ClientModInitializer {
             "key.lightningesp.menu",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_RIGHT_SHIFT,
-            KeyBinding.MISC_CATEGORY
+            "category.lightningesp"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
